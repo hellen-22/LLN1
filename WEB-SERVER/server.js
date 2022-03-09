@@ -15,9 +15,19 @@ const PORT = process.env.PORT | 3500;
 
 const fileServe = async(filePath, contentType, response) => {
     try {
-        const data = await fsPromises.readFile(filePath, 'utf8');
-        response.writeHead(200, {'Location': contentType});
-        response.end(data);
+        const rawData = await fsPromises.readFile(
+            filePath, 
+            !contentType.includes('image') ? 'utf8' :''
+            );
+        const data = contentType === 'application/json'
+            ? JSON.parse(rawData) : rawData;
+        response.writeHead(
+            filePath.includes('404.html') ? 404 : 200, 
+            {'Location': contentType});
+        response.end(
+            contentType === 'application/json'
+                ? JSON.stringify(data) : data
+        );
         
     } catch (err) {
         console.log(err);
