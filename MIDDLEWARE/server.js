@@ -2,7 +2,25 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const http = require('http');
+const cors = require('cors');
+const { logger } = require('./middleware/eventLog');
 const PORT = process.env.PORT | 3500;
+
+//CUSTOM MIDDLEWARE
+app.use(logger)
+
+//CROSS ORIGIN RESOURCE SHARING
+app.use(cors());
+
+//BUILT-IN MIDDLEWARE
+//form data
+app.use(express.urlencoded({ extended: false }));
+//json data
+app.use(express.json())
+//static files
+app.use(express.static(path.join(__dirname, '/public')))
+
+
 
 app.get('^/$|indes(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'indes.html'));
