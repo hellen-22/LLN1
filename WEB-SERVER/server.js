@@ -10,6 +10,8 @@ const { url } = require('inspector');
 class Emmiter extends EventEmmiter {};
 
 const myEmmiter = new Emmiter();
+
+myEmmiter.on('log', (msg, fileName) => eventLog(msg, fileName));
 const PORT = process.env.PORT | 3500;
 
 
@@ -30,7 +32,8 @@ const fileServe = async(filePath, contentType, response) => {
         );
         
     } catch (err) {
-        console.log(err);
+        //console.log(err);
+        myEmmiter.emit('log', `${err.name}\: ${err.message}`, 'errLog.txt');
         response.statusCode = 500;
         response.end()
     }
@@ -39,6 +42,7 @@ const fileServe = async(filePath, contentType, response) => {
 
 const server = http.createServer((req, res) => {
     console.log(req.url, req.method);
+    myEmmiter.emit('log', `${req.url}\t${req.method}`, 'reqLog.txt');
 
     const extension = path.extname(req.url);
 
