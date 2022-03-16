@@ -25,3 +25,9 @@
 2022.03.15	07:33:25	f307f8a1-6f20-4ccd-9b32-262b260ff683	GET	undefined	/new-page
 2022.03.15	07:33:34	7184ac0e-ca09-4431-a358-9ed99f0123bd	GET	undefined	/old-page
 2022.03.15	07:33:34	4696828e-3fbb-4350-a079-07fcfac2013a	GET	undefined	/new-page.html
+2022.03.16	07:06:03	4863feab-9c04-4931-8713-45394d17b2dd	PUT	undefined	/employees
+2022.03.16	07:05:33	75f41f89-5284-4d39-8b19-377a8409c14e	GET	undefined	/employees
+2022.03.16	07:05:46	08216161-be79-45e0-b326-d2afa529f7e2	POST	undefined	/employees
+2022.03.16	07:08:27	1b9d679d-82a3-4880-9a3a-4877efb6173d	POST	undefined	/employees
+2022.03.16	07:08:53	e3a47cbd-d201-4ad7-b8d0-383e33d63a9e	GET	undefined	/employees
+2022.03.16	07:09:01	84f28dc1-22fe-4f2f-a7cb-c92f80d5a9ee	PUT	undefined	/employees
