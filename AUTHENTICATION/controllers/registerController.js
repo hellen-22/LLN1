@@ -6,7 +6,7 @@ const userDB = {
 const fsPromises = require('fs').promises;
 const path = require('path');
 const bycrypt = require('bcrypt');
-const req = require('express/lib/request');
+
 
 const handleNewUser = async(req, res) => {
     const {user, pwd} = req.body;
@@ -14,8 +14,20 @@ const handleNewUser = async(req, res) => {
     const duplicate = userDB.users.find(person => person.username === user);
     if (duplicate) return res.sendStatus(409);
     try {
+        const hashedPwd = await bycrypt.hash(pwd, 10)
+        const createNewUser = ({ 'username' : user, 'password' : hashedPwd});
+        userDB.setUsers([...userDB.users, createNewUser]);
+        await fsPromises.writeFile(path.join(__dirname, '..', 'model', 'users.json'),
+        JSON.stringify(userDB.users)
+        );
+        console.log(userDB.users);
+        res.status(201).json({ 'success' : `New user ${user} created`})
         
     } catch (err) {
         res.status(500).json({ 'message' : err.message });
     }
 };
+
+
+
+module.exports = { handleNewUser };

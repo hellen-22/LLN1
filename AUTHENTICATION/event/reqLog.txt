@@ -35,3 +35,7 @@
 2022.03.16	08:45:40	44360f73-9af2-4d4d-9769-3009e7c4d983	POST	undefined	/employees
 2022.03.16	08:45:51	1fbf9fed-5b11-450e-a4e9-1cdf1fd771d2	POST	undefined	/employees
 2022.03.16	08:46:11	dc2157d7-9441-4365-a95b-d2617a869ed1	POST	undefined	/employees
+2022.03.18	07:04:09	adeef7bd-84f4-4b01-a5ed-a609ea44b16e	POST	undefined	/register
+2022.03.18	07:04:17	546c6fba-d40d-439f-a90f-b5b5c4c85db5	POST	undefined	/register
+2022.03.18	07:05:00	53e6f2fa-d6c7-435e-bbbd-367bb33adc73	POST	undefined	/register
+2022.03.18	07:08:10	db5b3bcc-2229-4e13-95df-840d2e447e55	POST	undefined	/register
