@@ -1,0 +1,2 @@
+2022.03.15	06:23:28	38f11b2c-4f6c-4ab1-b268-d6cabdb4689a	Error : Not allowed by cors
+2022.03.15	07:32:18	dd62d962-1764-468d-b4ee-bd16486de660	Error : ENOENT: no such file or directory, stat 'C:\Users\hellen\Desktop\LLN1\ROUTING\routes\views\indes.html'
