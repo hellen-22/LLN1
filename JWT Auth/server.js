@@ -6,11 +6,16 @@ const cors = require('cors');
 const corsOptions = require('./config/corsOptions')
 const { logger } = require('./middleware/eventLog');
 const errorHandler = require('./middleware/errorHandler');
+const credentials = require('./middleware/credentials')
+const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT | 3500;
 
 //CUSTOM MIDDLEWARE
-app.use(logger)
+app.use(logger);
 
+
+app.use(credentials);
 //CROSS ORIGIN RESOURCE SHARING
 app.use(cors(corsOptions));
 
@@ -19,12 +24,20 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 //json data
 app.use(express.json())
+
+//cookies
+app.use(cookieParser());
+
 //static files
 app.use(express.static(path.join(__dirname, '/public')))
 
 app.use('/', require('./routes/root'));
 app.use('/register', require('./routes/register'));
 app.use('/login', require('./routes/login'));
+app.use('/refresh', require('./routes/refreshToken'));
+app.use('/logout', require('./routes/logout'));
+
+app.use(verifyJWT);
 app.use('/employees', require('./routes/api/employees'));
 
 app.all('*', (req, res) => {

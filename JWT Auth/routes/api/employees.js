@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const employeeController = require('./../../controllers/employeesController')
+const verifyJWT = require('../../middleware/verifyJWT');
 
 router.route('/')
     .get(employeeController.getAllEmployees)
